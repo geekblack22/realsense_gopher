@@ -1,0 +1,11 @@
+<launch>
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+   <arg name="filters" value="pointcloud" />
+   <arg name="depth_fps" value="30" />
+   <arg name="color_fps" value="30" />
+   <arg name="initial_reset" value="true" />
+   
+  </include>
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find realsense_gopher)/rviz/realsense_config.rviz" />
+  <node name="segment_cloud" pkg="realsense_gopher" type="segment_cloud"  respawn="true"/>
+</launch>
